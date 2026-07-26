@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sumedh Lokhande — DevOps Engineer</title>
+<meta name="description" content="Sumedh Keshavrao Lokhande — DevOps Engineer specializing in Kubernetes, AWS, Terraform, and high-availability production infrastructure.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ===== STATUS BAR (signature element) ===== -->
+<div class="statusbar" id="statusbar">
+  <div class="statusbar-inner">
+    <span class="pulse-dot"></span>
+    <span class="statusbar-item">SYSTEM <b>ONLINE</b></span>
+    <span class="statusbar-sep">/</span>
+    <span class="statusbar-item">UPTIME <b id="uptimeCounter">0.00%</b></span>
+    <span class="statusbar-sep">/</span>
+    <span class="statusbar-item">NODES <b>25+</b></span>
+    <span class="statusbar-sep">/</span>
+    <span class="statusbar-item">PODS <b>200+</b></span>
+    <span class="statusbar-sep">/</span>
+    <span class="statusbar-item region">ap-south-1 · HYDERABAD</span>
+  </div>
+</div>
+
+<!-- ===== NAV ===== -->
+<header class="nav">
+  <a href="#top" class="nav-brand">SKL<span class="dot">.</span>ops</a>
+  <nav class="nav-links">
+    <a href="#about">about</a>
+    <a href="#skills">stack</a>
+    <a href="#experience">deploy-log</a>
+    <a href="#strengths">strengths</a>
+    <a href="#education">education</a>
+    <a href="#contact">contact</a>
+  </nav>
+  <a href="#contact" class="nav-cta">↓ get resume</a>
+</header>
+
+<main id="top">
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <p class="terminal-line">
+        <span class="prompt">sumedh@prod</span><span class="colon">:</span><span class="path">~</span><span class="dollar">$</span>
+        <span id="typed"></span><span class="cursor">▍</span>
+      </p>
+      <h1 class="hero-title">
+        Sumedh Keshavrao Lokhande
+      </h1>
+      <p class="hero-subtitle">DevOps Engineer — Kubernetes · AWS · GitOps · High-Availability Systems</p>
+      <p class="hero-desc">
+        5+ years keeping production infrastructure upright, including live payment-processing
+        systems at <strong>NPCI</strong>. I work where uptime is non-negotiable.
+      </p>
+      <div class="hero-actions">
+        <a href="#experience" class="btn btn-primary">view deploy log →</a>
+        <a href="#contact" class="btn btn-ghost">get in touch</a>
+      </div>
+      <div class="hero-meta">
+        <span>📍 Hyderabad, India</span>
+        <span>·</span>
+        <span>open to relocation</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT / SUMMARY ===== -->
+  <section id="about" class="section">
+    <div class="section-head">
+      <span class="eyebrow">// 01 — summary.log</span>
+      <h2>What I run in production</h2>
+    </div>
+    <div class="panel about-panel">
+      <p>
+        DevOps Engineer with 5+ years of experience operating and supporting production
+        infrastructure, including live payment-processing systems at NPCI. Hands-on with
+        Kubernetes, Docker, ArgoCD, Ansible, Terraform, AWS (EC2, S3, RDS, Lambda, CloudWatch,
+        Route53, ELB/ALB), HashiCorp Vault, Ceph, MinIO, and Prometheus/Grafana monitoring.
+        Strong track record in CI/CD pipeline development, infrastructure automation, and 24x7
+        production support in high-availability, security-sensitive environments.
+      </p>
+      <div class="about-stats">
+        <div class="stat">
+          <span class="stat-value" data-count="5">0</span><span class="stat-plus">+</span>
+          <span class="stat-label">years in production ops</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value" data-count="25">0</span><span class="stat-plus">+</span>
+          <span class="stat-label">cluster nodes supported</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value" data-count="200">0</span><span class="stat-plus">+</span>
+          <span class="stat-label">pods in production</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value" data-count="24">0</span><span class="stat-plus">x7</span>
+          <span class="stat-label">on-call rotations</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SKILLS ===== -->
+  <section id="skills" class="section">
+    <div class="section-head">
+      <span class="eyebrow">// 02 — stack.yaml</span>
+      <h2>The stack</h2>
+    </div>
+
+    <div class="stack-grid">
+      <div class="panel stack-block">
+        <h3><span class="tag tag-cyan">cloud</span> AWS</h3>
+        <div class="chips">
+          <span class="chip">EC2</span><span class="chip">S3</span><span class="chip">VPC</span>
+          <span class="chip">IAM</span><span class="chip">RDS</span><span class="chip">Lambda</span>
+          <span class="chip">CloudWatch</span><span class="chip">Route53</span>
+          <span class="chip">ELB/ALB</span><span class="chip">CloudFront</span>
+        </div>
+      </div>
+
+      <div class="panel stack-block">
+        <h3><span class="tag tag-amber">platform</span> DevOps &amp; Platform</h3>
+        <div class="chips">
+          <span class="chip">Kubernetes</span><span class="chip">Docker</span>
+          <span class="chip">ArgoCD</span><span class="chip">Helm</span>
+          <span class="chip">Ansible</span><span class="chip">Terraform</span>
+          <span class="chip">Jenkins</span><span class="chip">GitHub Actions</span>
+          <span class="chip">Git</span><span class="chip">Prometheus</span>
+          <span class="chip">Grafana</span><span class="chip">Alertmanager</span>
+          <span class="chip">Ceph</span><span class="chip">MinIO</span>
+          <span class="chip">HashiCorp Vault</span><span class="chip">Linux</span>
+          <span class="chip">Bash</span><span class="chip">Python</span>
+          <span class="chip">Trino</span><span class="chip">Superset</span>
+          <span class="chip">Dagster</span><span class="chip">Kubeflow</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EXPERIENCE — deploy log ===== -->
+  <section id="experience" class="section">
+    <div class="section-head">
+      <span class="eyebrow">// 03 — deploy-log.history</span>
+      <h2>Where I've shipped &amp; kept things running</h2>
+    </div>
+
+    <div class="deploylog">
+
+      <article class="logentry">
+        <div class="logentry-rail">
+          <span class="logdot logdot-live"></span>
+          <span class="logline"></span>
+        </div>
+        <div class="panel logentry-body">
+          <div class="logentry-top">
+            <span class="badge badge-live">● LIVE</span>
+            <span class="logentry-date">Jul 2025 — Present</span>
+          </div>
+          <h3>DevOps Engineer <span class="role-sep">·</span> Contract</h3>
+          <p class="logentry-org">Winjit Technologies — deployed at NPCI, Hyderabad</p>
+          <ul>
+            <li>Provide L1/L2 operational support for Kubernetes clusters (25+ nodes, 200+ pods) running UPI, IMPS, and RuPay payment workloads — monitoring, patching, incident response.</li>
+            <li>Support GitOps-based application deployments using ArgoCD and Helm within established release pipelines to push validated changes to production with minimal disruption.</li>
+            <li>Monitor cluster and application health via Prometheus and Grafana dashboards; perform root cause analysis on production incidents and document findings for the platform team.</li>
+            <li>Track node health, resource utilization, and etcd status as part of routine cluster monitoring, escalating anomalies per established runbooks.</li>
+            <li>Assist with Ceph and MinIO object storage operations, including capacity checks and routine maintenance.</li>
+            <li>Support HashiCorp Vault secrets management, including secret rotation and access requests, under existing security policies.</li>
+            <li>Participate in 24x7 production support rotations for national payment infrastructure in a high-compliance, security-sensitive environment with strict change-management processes.</li>
+            <li>Collaborate with senior engineers and architects on cluster upgrades and scaling activities.</li>
+          </ul>
+          <div class="logentry-tags">
+            <span class="chip chip-sm">Kubernetes</span><span class="chip chip-sm">ArgoCD</span>
+            <span class="chip chip-sm">Helm</span><span class="chip chip-sm">Prometheus</span>
+            <span class="chip chip-sm">Grafana</span><span class="chip chip-sm">Vault</span>
+            <span class="chip chip-sm">Ceph</span><span class="chip chip-sm">MinIO</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="logentry">
+        <div class="logentry-rail">
+          <span class="logdot"></span>
+        </div>
+        <div class="panel logentry-body">
+          <div class="logentry-top">
+            <span class="badge badge-done">✓ COMPLETED</span>
+            <span class="logentry-date">Nov 2020 — Jan 2025</span>
+          </div>
+          <h3>DevOps Engineer</h3>
+          <p class="logentry-org">Siril Technologies Pvt Ltd — on deputation to Byju's</p>
+          <ul>
+            <li>Built and maintained CI/CD pipelines using Jenkins and GitHub Actions to automate build, test, and deployment workflows across multiple application teams.</li>
+            <li>Provisioned and managed AWS infrastructure using Terraform (EC2, S3, VPC, IAM, RDS, Lambda, CloudWatch, Route53, ELB/ALB), standardizing environment setup and reducing manual configuration steps.</li>
+            <li>Automated configuration management and repetitive operational tasks using Ansible playbooks, improving consistency across environments.</li>
+            <li>Containerized applications with Docker and deployed/managed them on Kubernetes, including writing and maintaining Helm charts for repeatable releases.</li>
+            <li>Implemented monitoring and alerting using Prometheus, Grafana, and Alertmanager to improve system visibility and reduce time-to-detect for production issues.</li>
+            <li>Managed Git-based version control workflows and branching strategies to support multiple concurrent release cycles.</li>
+            <li>Worked with Trino, Superset, and Dagster to support data infrastructure, reporting pipelines, and internal analytics workflows.</li>
+            <li>Performed day-to-day Linux system administration and troubleshooting (Bash scripting, log analysis, service management).</li>
+            <li>Worked cross-functionally with development and QA teams to troubleshoot deployment issues and improve release readiness.</li>
+          </ul>
+          <div class="logentry-tags">
+            <span class="chip chip-sm">Terraform</span><span class="chip chip-sm">Jenkins</span>
+            <span class="chip chip-sm">GitHub Actions</span><span class="chip chip-sm">Ansible</span>
+            <span class="chip chip-sm">Docker</span><span class="chip chip-sm">Kubernetes</span>
+            <span class="chip chip-sm">Trino</span><span class="chip chip-sm">Dagster</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ===== STRENGTHS ===== -->
+  <section id="strengths" class="section">
+    <div class="section-head">
+      <span class="eyebrow">// 04 — health-checks.yaml</span>
+      <h2>Key strengths</h2>
+    </div>
+    <div class="checks-grid">
+      <div class="panel check">
+        <span class="check-mark">✓</span>
+        <p>Production support experience in a highly regulated, high-availability financial environment — national payment systems.</p>
+      </div>
+      <div class="panel check">
+        <span class="check-mark">✓</span>
+        <p>Solid grounding in containerization and Kubernetes operations, from workload troubleshooting to routine cluster maintenance.</p>
+      </div>
+      <div class="panel check">
+        <span class="check-mark">✓</span>
+        <p>Comfortable working within GitOps and Infrastructure-as-Code practices — ArgoCD, Terraform, Ansible.</p>
+      </div>
+      <div class="panel check">
+        <span class="check-mark">✓</span>
+        <p>Dependable in 24x7 support rotations, with a track record of following change-management and incident-response processes accurately.</p>
+      </div>
+      <div class="panel check">
+        <span class="check-mark">✓</span>
+        <p>Quick to pick up new tools within an existing platform — gained working proficiency with Ceph, MinIO, and Vault after joining the NPCI engagement.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EDUCATION ===== -->
+  <section id="education" class="section">
+    <div class="section-head">
+      <span class="eyebrow">// 05 — education.log</span>
+      <h2>Education</h2>
+    </div>
+    <div class="panel edu-panel">
+      <div class="edu-row">
+        <div>
+          <h3>Bachelor of Engineering, Electrical Engineering</h3>
+          <p class="logentry-org">KJ College of Engineering, Pune</p>
+        </div>
+        <span class="badge badge-done">2020</span>
+      </div>
+      <div class="edu-row">
+        <div>
+          <h3>Diploma in Electrical Engineering</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" class="section section-contact">
+    <div class="section-head">
+      <span class="eyebrow">// 06 — connect.sh</span>
+      <h2>Let's talk infrastructure</h2>
+    </div>
+    <div class="panel contact-panel">
+      <p>
+        Available for fintech and enterprise infrastructure roles requiring production support
+        and platform engineering experience. Based in Hyderabad, India — open to relocation
+        for the right opportunity.
+      </p>
+      <div class="contact-links">
+        <a href="mailto:sumedhkl30@gmail.com" class="btn btn-primary">✉ sumedhkl30@gmail.com</a>
+        <a href="tel:+918421920264" class="btn btn-ghost">☎ +91 84219 20264</a>
+        <a href="https://www.linkedin.com/in/sumedh-lokhande" target="_blank" rel="noopener" class="btn btn-ghost">in/sumedh-lokhande ↗</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>© <span id="year"></span> Sumedh Keshavrao Lokhande. Built with plain HTML/CSS/JS — no frameworks, no drama.</p>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
