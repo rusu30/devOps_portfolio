@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sumedh Lokhande — SRE / Platform Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0A0D12;
+    --bg-panel: #10141B;
+    --bg-panel-hover: #141922;
+    --border: #212832;
+    --border-bright: #2E3744;
+    --text: #E7ECF3;
+    --text-dim: #8B96A5;
+    --text-faint: #5A6472;
+    --up: #3FC97A;
+    --up-dim: #1F5C3B;
+    --warn: #E3A83B;
+    --info: #4FA3D9;
+    --mono: 'IBM Plex Mono', monospace;
+    --sans: 'Inter', sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    background-image:
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 64px 64px;
+    opacity:0.15;
+    pointer-events:none;
+    z-index:0;
+  }
+  .wrap{max-width:1040px; margin:0 auto; padding:0 24px; position:relative; z-index:1;}
+  a{color:inherit;}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(10,13,18,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-inner{
+    max-width:1040px; margin:0 auto; padding:14px 24px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .nav-brand{
+    font-family:var(--mono); font-weight:600; font-size:14px;
+    letter-spacing:0.02em; display:flex; align-items:center; gap:9px;
+  }
+  .dot{
+    width:8px; height:8px; border-radius:50%;
+    background:var(--up);
+    box-shadow:0 0 0 0 rgba(63,201,122,0.6);
+    animation:pulse 2.4s infinite;
+    flex-shrink:0;
+  }
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(63,201,122,0.45);}
+    70%{box-shadow:0 0 0 7px rgba(63,201,122,0);}
+    100%{box-shadow:0 0 0 0 rgba(63,201,122,0);}
+  }
+  .nav-links{display:flex; gap:28px; font-size:13px; font-family:var(--mono);}
+  .nav-links a{color:var(--text-dim); text-decoration:none; transition:color .2s;}
+  .nav-links a:hover{color:var(--up);}
+  @media(max-width:700px){.nav-links{display:none;}}
+
+  /* ---------- HERO / STATUS PANEL ---------- */
+  header.hero{padding:72px 0 40px;}
+  .status-tag{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:var(--mono); font-size:12px; color:var(--up);
+    background:rgba(63,201,122,0.08); border:1px solid var(--up-dim);
+    padding:5px 12px; border-radius:100px; margin-bottom:24px;
+  }
+  h1{
+    font-size:clamp(34px,5.4vw,54px);
+    font-weight:800; letter-spacing:-0.02em; line-height:1.08;
+    margin-bottom:10px;
+  }
+  .role-line{
+    font-family:var(--mono); font-size:15px; color:var(--info);
+    margin-bottom:22px;
+  }
+  .role-line .sep{color:var(--text-faint); padding:0 6px;}
+  .summary{
+    max-width:640px; color:var(--text-dim); font-size:16px; margin-bottom:34px;
+  }
+  .contact-row{
+    display:flex; flex-wrap:wrap; gap:18px; font-family:var(--mono); font-size:13px;
+    color:var(--text-dim); margin-bottom:46px;
+  }
+  .contact-row a{text-decoration:none; color:var(--text-dim); transition:color .2s;}
+  .contact-row a:hover{color:var(--up);}
+  .contact-row span{color:var(--text-faint);}
+
+  /* metrics row = signature element */
+  .metrics{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+    background:var(--border); border:1px solid var(--border);
+    border-radius:10px; overflow:hidden;
+  }
+  .metric{
+    background:var(--bg-panel); padding:20px 18px;
+  }
+  .metric .val{
+    font-family:var(--mono); font-size:26px; font-weight:600; color:var(--up);
+  }
+  .metric .lbl{
+    font-size:12px; color:var(--text-faint); margin-top:4px; letter-spacing:0.01em;
+  }
+  @media(max-width:640px){.metrics{grid-template-columns:repeat(2,1fr);}}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:64px 0;}
+  .sec-head{
+    display:flex; align-items:baseline; gap:12px; margin-bottom:28px;
+  }
+  .sec-idx{font-family:var(--mono); color:var(--text-faint); font-size:13px;}
+  .sec-title{font-size:22px; font-weight:700; letter-spacing:-0.01em;}
+  .sec-rule{flex:1; height:1px; background:var(--border);}
+  .sec-sub{color:var(--text-dim); font-size:14px; margin:-18px 0 26px;}
+
+  /* ---------- COMPETENCIES ---------- */
+  .pills{display:flex; flex-wrap:wrap; gap:9px;}
+  .pill{
+    font-family:var(--mono); font-size:12.5px; color:var(--text-dim);
+    border:1px solid var(--border-bright); padding:7px 13px; border-radius:6px;
+    background:var(--bg-panel); transition:.2s;
+  }
+  .pill:hover{border-color:var(--up-dim); color:var(--up); background:rgba(63,201,122,0.06);}
+
+  /* ---------- SKILLS GRID ---------- */
+  .skills-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px;}
+  @media(max-width:800px){.skills-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:520px){.skills-grid{grid-template-columns:1fr;}}
+  .skill-card{
+    background:var(--bg-panel); border:1px solid var(--border);
+    border-radius:10px; padding:18px 20px; transition:.2s;
+  }
+  .skill-card:hover{border-color:var(--border-bright); background:var(--bg-panel-hover);}
+  .skill-card h4{
+    font-family:var(--mono); font-size:12px; text-transform:uppercase;
+    letter-spacing:0.06em; color:var(--info); margin-bottom:10px;
+  }
+  .skill-card p{font-size:13.5px; color:var(--text-dim); line-height:1.65;}
+
+  /* ---------- EXPERIENCE : deploy log style ---------- */
+  .log{position:relative; padding-left:26px;}
+  .log::before{
+    content:""; position:absolute; left:5px; top:6px; bottom:6px; width:1px;
+    background:linear-gradient(var(--border-bright), var(--border) 90%);
+  }
+  .job{position:relative; margin-bottom:44px;}
+  .job:last-child{margin-bottom:0;}
+  .job::before{
+    content:""; position:absolute; left:-26px; top:4px;
+    width:11px; height:11px; border-radius:50%;
+    background:var(--bg); border:2px solid var(--up);
+  }
+  .job-head{display:flex; flex-wrap:wrap; align-items:baseline; gap:10px; margin-bottom:4px;}
+  .job-title{font-size:17px; font-weight:700;}
+  .job-org{color:var(--info); font-size:14px; font-family:var(--mono);}
+  .job-meta{
+    font-family:var(--mono); font-size:12px; color:var(--text-faint); margin-bottom:14px;
+    display:flex; flex-wrap:wrap; gap:14px;
+  }
+  .job-meta .tag{
+    color:var(--warn); background:rgba(227,168,59,0.08);
+    border:1px solid rgba(227,168,59,0.25); padding:1px 8px; border-radius:4px;
+  }
+  .job-block{margin-bottom:16px;}
+  .job-block:last-child{margin-bottom:0;}
+  .job-block h5{
+    font-family:var(--mono); font-size:11.5px; color:var(--text-faint);
+    text-transform:uppercase; letter-spacing:0.06em; margin-bottom:8px;
+  }
+  .job ul{list-style:none;}
+  .job li{
+    position:relative; padding-left:18px; margin-bottom:8px;
+    color:var(--text-dim); font-size:14px; line-height:1.6;
+  }
+  .job li::before{
+    content:"›"; position:absolute; left:0; color:var(--up); font-family:var(--mono);
+  }
+  .job li b{color:var(--text); font-weight:600;}
+
+  .break-note{
+    font-family:var(--mono); font-size:12.5px; color:var(--text-faint);
+    border-left:2px solid var(--border-bright); padding:10px 0 10px 16px; margin:0 0 44px -26px;
+    margin-left:0; padding-left:16px;
+  }
+
+  /* ---------- PROJECTS ---------- */
+  .proj-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:16px;}
+  @media(max-width:700px){.proj-grid{grid-template-columns:1fr;}}
+  .proj-card{
+    background:var(--bg-panel); border:1px solid var(--border); border-radius:10px;
+    padding:22px; transition:.2s;
+  }
+  .proj-card:hover{border-color:var(--up-dim); transform:translateY(-2px);}
+  .proj-card h4{font-size:15.5px; margin-bottom:12px; display:flex; align-items:center; gap:8px;}
+  .proj-card h4::before{content:"◆"; color:var(--up); font-size:11px;}
+  .proj-card ul{list-style:none;}
+  .proj-card li{
+    position:relative; padding-left:16px; margin-bottom:8px;
+    color:var(--text-dim); font-size:13.5px; line-height:1.6;
+  }
+  .proj-card li::before{content:"–"; position:absolute; left:0; color:var(--text-faint);}
+
+  /* ---------- ACHIEVEMENTS ---------- */
+  .ach-list{display:flex; flex-direction:column; gap:1px; background:var(--border); border:1px solid var(--border); border-radius:10px; overflow:hidden;}
+  .ach-item{
+    background:var(--bg-panel); padding:16px 20px; display:flex; align-items:center; gap:14px;
+    font-size:14px; color:var(--text-dim);
+  }
+  .ach-item .check{color:var(--up); font-family:var(--mono); flex-shrink:0;}
+  .ach-item b{color:var(--text);}
+
+  /* ---------- CERTS + EDU ---------- */
+  .two-col{display:grid; grid-template-columns:1.4fr 1fr; gap:40px;}
+  @media(max-width:700px){.two-col{grid-template-columns:1fr;}}
+  .cert-item{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:14px 0; border-bottom:1px solid var(--border); font-size:14px;
+  }
+  .cert-item:last-child{border-bottom:none;}
+  .cert-status{
+    font-family:var(--mono); font-size:11px; color:var(--warn);
+    background:rgba(227,168,59,0.08); border:1px solid rgba(227,168,59,0.25);
+    padding:3px 9px; border-radius:100px; white-space:nowrap;
+  }
+  .edu-card{
+    background:var(--bg-panel); border:1px solid var(--border); border-radius:10px; padding:22px;
+  }
+  .edu-card h4{font-size:15px; margin-bottom:6px;}
+  .edu-card p{font-size:13.5px; color:var(--text-dim);}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    border-top:1px solid var(--border); padding:40px 0 60px; margin-top:20px;
+    text-align:center;
+  }
+  footer .status-tag{margin-bottom:18px;}
+  footer h3{font-size:24px; margin-bottom:10px;}
+  footer p{color:var(--text-dim); font-size:14px; margin-bottom:22px;}
+  .foot-links{display:flex; justify-content:center; gap:22px; font-family:var(--mono); font-size:13px; flex-wrap:wrap;}
+  .foot-links a{text-decoration:none; color:var(--text-dim); transition:color .2s;}
+  .foot-links a:hover{color:var(--up);}
+  .foot-fine{margin-top:36px; font-family:var(--mono); font-size:11px; color:var(--text-faint);}
+
+  /* reveal on scroll */
+  .reveal{opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1; transform:none; transition:none;}
+    .dot{animation:none;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-brand"><span class="dot"></span> S. LOKHANDE // SRE</div>
+    <div class="nav-links">
+      <a href="#experience">experience</a>
+      <a href="#projects">projects</a>
+      <a href="#skills">stack</a>
+      <a href="#contact">contact</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="status-tag"><span class="dot"></span> ALL SYSTEMS OPERATIONAL — OPEN TO OPPORTUNITIES</div>
+    <h1>Sumedh Keshavrao Lokhande</h1>
+    <div class="role-line">SITE RELIABILITY ENGINEER <span class="sep">/</span> CLOUD ENGINEER <span class="sep">/</span> PLATFORM ENGINEER</div>
+    <p class="summary">
+      I keep production infrastructure up and honest. Currently running Kubernetes at national-payments
+      scale for NPCI — the backbone behind UPI, IMPS, and RuPay — with a focus on GitOps delivery,
+      distributed storage, secrets management, and observability that catches problems before customers do.
+    </p>
+    <div class="contact-row">
+      <a href="mailto:sumedhkl30@gmail.com">sumedhkl30@gmail.com</a>
+      <span>·</span>
+      <a href="tel:+918421920264">+91 84219 20264</a>
+      <span>·</span>
+      <span>Hyderabad, India</span>
+      <span>·</span>
+      <a href="#" target="_blank">LinkedIn ↗</a>
+    </div>
+
+    <div class="metrics reveal">
+      <div class="metric"><div class="val">4+ yrs</div><div class="lbl">Production DevOps / SRE</div></div>
+      <div class="metric"><div class="val">99.9%+</div><div class="lbl">Uptime SLA maintained</div></div>
+      <div class="metric"><div class="val">25+</div><div class="lbl">K8s worker nodes managed</div></div>
+      <div class="metric"><div class="val">200+</div><div class="lbl">Production pods in operation</div></div>
+    </div>
+  </header>
+
+  <section id="competencies">
+    <div class="sec-head"><span class="sec-idx">01</span><span class="sec-title">Core Competencies</span><div class="sec-rule"></div></div>
+    <div class="pills reveal">
+      <span class="pill">Kubernetes Platform Ops</span>
+      <span class="pill">Site Reliability Engineering</span>
+      <span class="pill">DevOps Engineering</span>
+      <span class="pill">Platform Engineering</span>
+      <span class="pill">AWS Cloud Architecture</span>
+      <span class="pill">Infrastructure as Code</span>
+      <span class="pill">CI/CD Automation</span>
+      <span class="pill">GitOps (ArgoCD)</span>
+      <span class="pill">Distributed Storage (Ceph, MinIO)</span>
+      <span class="pill">Observability & Monitoring</span>
+      <span class="pill">Secrets Mgmt (HashiCorp Vault)</span>
+      <span class="pill">Incident Mgmt & RCA</span>
+      <span class="pill">Security & DevSecOps</span>
+      <span class="pill">Fintech / Payments (NPCI)</span>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="sec-head"><span class="sec-idx">02</span><span class="sec-title">Technical Stack</span><div class="sec-rule"></div></div>
+    <div class="skills-grid reveal">
+      <div class="skill-card"><h4>Cloud — AWS</h4><p>EC2, VPC, IAM, S3, RDS, Lambda, CloudWatch, CloudTrail, Security Groups, Auto Scaling</p></div>
+      <div class="skill-card"><h4>Containers & Orchestration</h4><p>Kubernetes (Cluster Admin, etcd, Node Mgmt, Pod Scheduling), Docker, Helm, Kubeflow, Dagster</p></div>
+      <div class="skill-card"><h4>IaC & Config Mgmt</h4><p>Terraform, Ansible, AWS CloudFormation, Environment Automation</p></div>
+      <div class="skill-card"><h4>CI/CD & GitOps</h4><p>Jenkins (Pipeline as Code), GitHub Actions, ArgoCD, Git, Image Promotion, Pull-Based Deployments</p></div>
+      <div class="skill-card"><h4>Observability</h4><p>Prometheus, Grafana, Nagios, Alertmanager, SLI/SLO Monitoring, Log Correlation</p></div>
+      <div class="skill-card"><h4>Storage</h4><p>Ceph (Distributed Object Storage), MinIO, High-Availability Storage, Data Durability</p></div>
+      <div class="skill-card"><h4>Security</h4><p>HashiCorp Vault, OIDC, IAM Policy Management, DevSecOps</p></div>
+      <div class="skill-card"><h4>Data Platforms</h4><p>Trino, Apache Spark, Kubeflow Pipelines, Apache Superset</p></div>
+      <div class="skill-card"><h4>Scripting & OS</h4><p>Bash, Python, RHEL, Ubuntu, CentOS, Kernel Tuning, Capacity Planning</p></div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="sec-head"><span class="sec-idx">03</span><span class="sec-title">Experience</span><div class="sec-rule"></div></div>
+    <div class="log reveal">
+
+      <div class="job">
+        <div class="job-head">
+          <span class="job-title">DevOps Consultant</span>
+          <span class="job-org">Winjit Technologies — Client: NPCI</span>
+        </div>
+        <div class="job-meta">
+          <span>Jul 2025 – Present</span><span>Hyderabad</span>
+          <span class="tag">National Payments Infra · UPI / IMPS / RuPay</span>
+        </div>
+
+        <div class="job-block">
+          <h5>Kubernetes Platform Operations</h5>
+          <ul>
+            <li>Operate production Kubernetes clusters with <b>25+ worker nodes and 200+ running pods</b> supporting mission-critical national payment systems under strict <b>99.9%+ uptime</b> requirements.</li>
+            <li>Own full cluster lifecycle — version upgrades, node scaling, workload scheduling, patching, and etcd health monitoring.</li>
+            <li>Run rolling updates and zero-downtime deployments across high-throughput payment workloads.</li>
+          </ul>
+        </div>
+
+        <div class="job-block">
+          <h5>GitOps & Deployment Engineering</h5>
+          <ul>
+            <li>Built and maintain a GitOps deployment architecture on <b>ArgoCD</b> as the centralized, auditable delivery controller for NPCI platforms.</li>
+            <li>Automated container image promotion across DEV → QA → UAT → PROD with full Git-based audit traceability.</li>
+            <li>Standardized deployments with <b>Helm charts</b> for consistent environment parity and reliable rollback.</li>
+          </ul>
+        </div>
+
+        <div class="job-block">
+          <h5>Observability & Reliability</h5>
+          <ul>
+            <li>Designed a real-time <b>Prometheus + Grafana</b> stack with custom alerting for proactive anomaly detection.</li>
+            <li>Lead structured RCA on production incidents, cutting MTTR through preventive fixes and runbook updates.</li>
+            <li>Provide 24×7 on-call support for national payment infrastructure under strict SLA commitments.</li>
+          </ul>
+        </div>
+
+        <div class="job-block">
+          <h5>Storage & Security</h5>
+          <ul>
+            <li>Manage distributed storage on <b>Ceph and MinIO</b> for high availability and data durability.</li>
+            <li>Administer secrets via <b>HashiCorp Vault</b> with Kubernetes auth and OIDC integration.</li>
+            <li>Enforce least-privilege access via AWS IAM roles and security groups across hybrid infrastructure.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="break-note">
+        Jan 2025 – Jun 2025 — Career development break: self-directed upskilling in AWS, Docker,
+        Kubernetes, and cloud-native architecture ahead of the NPCI role.
+      </div>
+
+      <div class="job">
+        <div class="job-head">
+          <span class="job-title">DevOps Engineer</span>
+          <span class="job-org">Siril Technologies Pvt Ltd</span>
+        </div>
+        <div class="job-meta">
+          <span>Nov 2020 – Jan 2025</span><span>Hyderabad</span>
+        </div>
+
+        <div class="job-block">
+          <h5>CI/CD & Automation</h5>
+          <ul>
+            <li>Built Jenkins CI/CD pipelines (Pipeline as Code), cutting <b>deployment cycle time by 30%</b>.</li>
+            <li>Rolled out blue-green and rolling deployments on 15+ node K8s clusters for zero-downtime releases.</li>
+            <li>Automated build/test/deploy workflows with GitHub Actions, reducing manual deployment errors.</li>
+          </ul>
+        </div>
+
+        <div class="job-block">
+          <h5>Infrastructure as Code & Cloud</h5>
+          <ul>
+            <li>Provisioned AWS infra (EC2, VPC, IAM, S3, RDS, Lambda) via Terraform, improving provisioning efficiency by <b>40%</b>.</li>
+            <li>Used Ansible for config management, keeping DEV/QA/PROD environments consistent.</li>
+          </ul>
+        </div>
+
+        <div class="job-block">
+          <h5>Containers & Observability</h5>
+          <ul>
+            <li>Containerized enterprise applications and deployed microservices to Kubernetes for horizontal scalability.</li>
+            <li>Implemented Prometheus + Grafana dashboards and alert rules for proactive incident detection.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="sec-head"><span class="sec-idx">04</span><span class="sec-title">Key Projects</span><div class="sec-rule"></div></div>
+    <div class="proj-grid reveal">
+      <div class="proj-card">
+        <h4>Enterprise Application Migration to AWS</h4>
+        <ul>
+          <li>Migrated enterprise workloads to AWS with modular Terraform IaC, cutting provisioning time by 40%.</li>
+          <li>Standardized DEV/QA/PROD configs with reusable modules, eliminating drift and easing onboarding.</li>
+        </ul>
+      </div>
+      <div class="proj-card">
+        <h4>CI/CD Pipeline Modernization</h4>
+        <ul>
+          <li>Designed standardized Jenkins pipelines, cutting deployment cycle time by 30% across teams.</li>
+          <li>Integrated automated testing and SonarQube gates to block defect-laden builds.</li>
+        </ul>
+      </div>
+      <div class="proj-card">
+        <h4>Kubernetes Monitoring Platform</h4>
+        <ul>
+          <li>Implemented Prometheus + Grafana observability across clusters — infra, app, and custom alerts.</li>
+          <li>Configured Alertmanager with PagerDuty for faster on-call detection and response.</li>
+        </ul>
+      </div>
+      <div class="proj-card">
+        <h4>Distributed Storage Infrastructure</h4>
+        <ul>
+          <li>Supported Ceph-based object storage for NPCI, ensuring durability and replication health.</li>
+          <li>Configured MinIO as S3-compatible storage for internal data platform services.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="achievements">
+    <div class="sec-head"><span class="sec-idx">05</span><span class="sec-title">Highlights</span><div class="sec-rule"></div></div>
+    <div class="ach-list reveal">
+      <div class="ach-item"><span class="check">✓</span> Reduced deployment cycle time by <b>30%</b> through end-to-end CI/CD automation (Jenkins + GitHub Actions).</div>
+      <div class="ach-item"><span class="check">✓</span> Improved infrastructure provisioning efficiency by <b>40%</b> via reusable Terraform IaC modules.</div>
+      <div class="ach-item"><span class="check">✓</span> Maintained <b>99.9%+</b> production uptime for NPCI's national payment systems (UPI, IMPS, RuPay).</div>
+      <div class="ach-item"><span class="check">✓</span> Strengthened stability through proactive Prometheus/Grafana monitoring and blameless RCA culture.</div>
+      <div class="ach-item"><span class="check">✓</span> Eliminated manual secrets-management risk with HashiCorp Vault + Kubernetes auth + OIDC.</div>
+      <div class="ach-item"><span class="check">✓</span> Delivered consistent, auditable releases via GitOps architecture (ArgoCD).</div>
+    </div>
+  </section>
+
+  <section id="certs">
+    <div class="sec-head"><span class="sec-idx">06</span><span class="sec-title">Certifications & Education</span><div class="sec-rule"></div></div>
+    <div class="two-col reveal">
+      <div>
+        <div class="cert-item"><span>AWS Certified Solutions Architect – Associate</span><span class="cert-status">IN PROGRESS</span></div>
+        <div class="cert-item"><span>Certified Kubernetes Administrator (CKA)</span><span class="cert-status">IN PROGRESS</span></div>
+        <div class="cert-item"><span>HashiCorp Certified: Terraform Associate</span><span class="cert-status">IN PROGRESS</span></div>
+      </div>
+      <div class="edu-card">
+        <h4>B.E. — Electrical Engineering</h4>
+        <p>KJ College of Engineering, Pune · 2020</p>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="status-tag"><span class="dot"></span> READY FOR DEPLOYMENT</div>
+    <h3>Let's talk infrastructure.</h3>
+    <p>Open to SRE, Platform, and Cloud Engineering roles.</p>
+    <div class="foot-links">
+      <a href="mailto:sumedhkl30@gmail.com">sumedhkl30@gmail.com</a>
+      <a href="tel:+918421920264">+91 84219 20264</a>
+      <a href="#" target="_blank">LinkedIn ↗</a>
+      <span>Hyderabad, India</span>
+    </div>
+    <div class="foot-fine">last deploy: this page · status: operational · uptime: 99.9%+</div>
+  </footer>
+</div>
+
+<script>
+  const items = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:0.12});
+  items.forEach(i=>io.observe(i));
+</script>
+
+</body>
+</html>
